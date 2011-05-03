@@ -1,0 +1,14 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Photo:
+  fields:
+    default: name, taken_on, exposure, f_stop, focal_length, iso
+    form: name, image
+  order_by: 
+  relationships: 
+  filters: created_at
+  search: name
+  application: click
+

@@ -38,5 +38,23 @@ module Click
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # 
+    # http://github.com/thoughtbot/paperclip/issues/issue/247
+    # 
+
+    #
+    # put this in the relevant section of your config/application.rb
+    #
+
+    config.after_initialize do
+
+      # copied from paperclip.rb: due to bundler, this doesn't seem to happen automagically anymore!?!
+      Dir.glob(File.join(File.expand_path(Rails.root), "lib", "paperclip_processors", "*.rb")).each do |processor|
+        require processor # PVDB don't rescue LoadError... let it rip!
+      end
+
+    end
+    
   end
 end
