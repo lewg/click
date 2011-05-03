@@ -276,11 +276,11 @@ html, body {height: 100%;}
 #container {min-height: 100%;}
 
 #main {/*overflow:auto;*/
-	padding-bottom: 2em;}  /* must be same height as the footer */
+	padding-bottom: 3em;}  /* must be same height as the footer */
 
 footer {position: relative;
-	margin-top: -2em; /* negative value of footer height */
-	height: 2em;
+	margin-top: -3em; /* negative value of footer height */
+	height: 3em;
 	clear:both;} 
 
 /*Opera Fix*/
@@ -372,6 +372,7 @@ div.image_info {
 	font-size: 2em;
 	color: #4A3629;
 	text-align: left;
+	padding-bottom: 1em;
 }
 
 div#right_arrow {
@@ -385,7 +386,11 @@ div#left_arrow {
 footer {
 	text-align: center;
 	color: #4A3629;
-	padding-top: 1em;
+	font-style: italic;
+}
+
+footer a {
+	color: #523118;
 }
 
 

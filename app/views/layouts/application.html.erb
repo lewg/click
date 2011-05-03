@@ -31,7 +31,7 @@
   <%= csrf_meta_tag %>
  
   <%- # All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -%>
-  <%= javascript_include_tag 'libs/modernizr-1.6.min.js' %>
+  <%= javascript_include_tag 'libs/modernizr-1.7.min' %>
 
 </head>
 <body>
@@ -48,18 +48,17 @@
   </div> <!--! end of #container -->
 
   <footer>
-		Footer
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/StillImage" rel="dct:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://click.goettner.net" property="cc:attributionName" rel="cc:attributionURL">Lewis J. Goettner, III</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
   </footer>
   
 
   <%- # Javascript at the bottom for fast page loading -%>
 
   <%- # Grab Google CDN's jQuery. fall back to local if necessary -%>
-  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js' %>
-  <%= javascript_tag %{!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/jquery-1.4.3.min.js"%3E%3C/script%3E'))} %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js' %>
+  <%= javascript_tag %{!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/jquery-1.5.1.min.js"%3E%3C/script%3E'))} %>
 
-  <%= javascript_include_tag 'plugins' %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'application' %>
 
   <%- # Fix any <img> or .png_bg background-images -%>
   <!--[if lt IE 7 ]>
@@ -73,9 +72,6 @@
 		</style>
 	<![endif]-->
 	
-  <%- # yui profiler and profileviewer - except for production -%>
-  <%= javascript_include_tag 'profiling/yahoo-profiling.min.js', 'profiling/config.js' unless Rails.env.production? %>
-
   <%- # asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -%>
   <%- # change the UA-XXXXX-X to be your site's ID -%>
   <%- if Rails.env.production? -%>
