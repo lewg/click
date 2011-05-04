@@ -22,13 +22,12 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, :styles => { :display => "900x500>", :thumb => "100x100>" }
   
   validate :check_for_exif
-  
-  before_save :load_exif
-  
   validates :name, :presence => true
   
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ['image/jpeg']
+  
+  before_save :load_exif
   
   def check_for_exif
     exif_data = EXIFR::JPEG.new(self.image.to_file)
