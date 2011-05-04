@@ -56,13 +56,24 @@ $(document).ready(function() {
 		ClickUI.setList(data.id_list);
 	})
 	
-	// TODO: Capture Left and Right Arrow Buttons
-	
-	// TODO: Power left/right buttons
+	// Power left/right buttons
 	$('#right_arrow').click(function(){
 		ClickUI.nextImg()
 	});
 	$('#left_arrow').click(function(){
 		ClickUI.prevImg()
 	});
+	
+	// Bind left/right arrows
+	$(document).bind('keydown', function(e){
+		switch (e.keyCode) {
+			case 37:
+				ClickUI.prevImg();
+				break;
+			case 39:
+				ClickUI.nextImg();
+				break;
+	 	}
+	})
+	
 })
