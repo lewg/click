@@ -20,6 +20,7 @@ class PhotosController < ApplicationController
     photo_info_line = "#{@photo.focal_length}mm #{@photo.f_stop}f #{@photo.exposure} ISO #{@photo.iso}"
     @photo_json = { 
       'title' => @photo.name,
+      'description' => @photo.description,
       'taken' => @photo.taken_on.strftime('%b %d, %Y'),
       'info' => photo_info_line,
       'url' => @photo.image.url(:display)

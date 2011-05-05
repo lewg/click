@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110502205348
+# Schema version: 20110505110323
 #
 # Table name: photos
 #
@@ -16,6 +16,7 @@
 #  image_content_type :string(255)
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  description        :string(255)
 #
 
 class Photo < ActiveRecord::Base

@@ -37,8 +37,8 @@ var ClickUI = new (function() {
 	
 	this.setImage = function(image_id) {
 		$.getJSON('/photos/'+image_id+'.json', function(data){
-			// Set the Image URL
-			$('#image img').attr('src', data.url);
+			// Set the Image URL and Description
+			$('#image img').attr('src', data.url).attr('alt', data.description)
 			// Set the caption
 			$('#caption').html(data.title);
 			// Set the info
