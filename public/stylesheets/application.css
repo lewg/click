@@ -278,10 +278,12 @@ html, body {height: 100%;}
 #main {/*overflow:auto;*/
 	padding-bottom: 3em;}  /* must be same height as the footer */
 
-footer {position: relative;
+footer {
+	position: relative;
 	margin-top: -3em; /* negative value of footer height */
 	height: 3em;
-	clear:both;} 
+	clear:both;
+} 
 
 /*Opera Fix*/
 body:before {
@@ -347,7 +349,7 @@ header h1 a, header h1 a:active, header h1 a:visited {
 
 
 #main_image {
-	margin-top: -5em;
+	margin-top: -6em;
 	text-align: center;
 }
 
@@ -377,10 +379,12 @@ div.image_info {
 
 div#right_arrow {
 	text-align: left;
+	cursor: pointer;
 }
 
 div#left_arrow {
 	text-align: right;
+	cursor: pointer;
 }
 
 footer {
