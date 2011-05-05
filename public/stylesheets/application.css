@@ -353,7 +353,7 @@ header h1 a, header h1 a:active, header h1 a:visited {
 	text-align: center;
 }
 
-#main_image img {
+#image img {
 	box-shadow: 5px 5px 8px rgba(0,0,0,0.6);
 	-moz-box-shadow: 5px 5px 8px rgba(0,0,0,0.6);
 	-webkit-box-shadow: 5px 5px 8px rgba(0,0,0,0.6);
@@ -385,6 +385,10 @@ div#right_arrow {
 div#left_arrow {
 	text-align: right;
 	cursor: pointer;
+}
+
+div.image_buttons {
+	float: right;
 }
 
 footer {
