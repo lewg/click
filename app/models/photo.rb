@@ -23,11 +23,16 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, :styles => { :display => "900x500>", :thumb => "100x100>" }
   
   validates :name, :presence => true
+  validates :description, :presence => true
   
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ['image/jpeg']
   
   before_save :load_exif
+    
+  def info_line
+    "#{self.focal_length}mm #{self.f_stop}f #{self.exposure} ISO #{self.iso}"
+  end
     
   def load_exif
     # Pull the Exif data
