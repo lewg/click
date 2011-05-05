@@ -1,4 +1,4 @@
-<div class="grid_2 alpha" id="left_arrow"><%= image_tag 'left_arrow.png' %></div>
+<div class="grid_2 alpha" id="left_arrow"><%= link_to image_tag('left_arrow.png'), root_path , :id => 'prev_link' %></div>
 <div class="grid_12">
 	<section id="main_image">
 		<h2 id="caption">Loading...</h2>
@@ -8,4 +8,4 @@
 		
 	</section>
 </div>
-<div class="grid_2 omega" id="right_arrow"><%= image_tag 'right_arrow.png' %></div>
+<div class="grid_2 omega" id="right_arrow"><%= link_to image_tag('right_arrow.png'), root_path , :id => 'next_link' %></div>

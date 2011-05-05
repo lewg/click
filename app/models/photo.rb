@@ -33,7 +33,33 @@ class Photo < ActiveRecord::Base
   def info_line
     "#{self.focal_length}mm #{self.f_stop}f #{self.exposure} ISO #{self.iso}"
   end
-    
+  
+  def self.id_list
+    @id_list = Array.new
+    self.find(:all, :order => 'taken_on desc').each { |photo| @id_list << photo.id }
+    @id_list
+  end
+  
+  def next_id
+    @id_list = Photo.id_list
+    next_index = @id_list.index(self.id) + 1
+    unless next_index==@id_list.length
+      @id_list[next_index]
+    else
+      @id_list[0]
+    end
+  end
+  
+  def prev_id
+    @id_list = Photo.id_list
+    prev_index = @id_list.index(self.id) - 1
+    unless prev_index == -1
+      @id_list[prev_index]
+    else
+      @id_list[@id_list.length-1]
+    end
+  end
+  
   def load_exif
     # Pull the Exif data
     exif_data = EXIFR::JPEG.new(self.image.to_file)

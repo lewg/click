@@ -36,4 +36,8 @@ describe Photo do
     non_jpeg_photo.should_not be_valid
   end
   
+  it "should return an id_list" do
+    Photo.id_list.should_not be_nil 
+  end
+  
 end

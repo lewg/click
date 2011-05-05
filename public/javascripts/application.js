@@ -7,42 +7,38 @@
 * Helper functions for the UI 
 */
 var ClickUI = new (function() {
-
-	var id_list = [];
-	var current_photo = null;
 	
-	// Set the List of Image IDs, return the first one
-	this.setList = function(new_ids) {
-		current_photo = new_ids.shift();
-		id_list = new_ids;
-		this.setImage(current_photo);
-		return current_photo;
-	}
+	var next_id = 0
+	var prev_id = 0
 	
 	// Get the next image id
 	this.nextImg = function() {
-		id_list.push(current_photo);
-		current_photo = id_list.shift();
-		this.setImage(current_photo);
-		return(current_photo);
+		this.setImage(next_id);
 	}
 	
 	// Get the previous image id
 	this.prevImg = function() {
-		id_list.unshift(current_photo);
-		current_photo = id_list.pop();
-		this.setImage(current_photo);
-		return(current_photo);
+		this.setImage(prev_id);
 	}
 	
 	this.setImage = function(image_id) {
-		$.getJSON('/photos/'+image_id+'.json', function(data){
+		if (isNaN(image_id)) {
+			data_url = '/photos/first.json';
+		} else {
+			data_url = '/photos/'+image_id+'.json';
+		}
+		$.getJSON(data_url, function(data){
 			// Set the Image URL and Description
 			$('#image img').attr('src', data.url).attr('alt', data.description)
 			// Set the caption
 			$('#caption').html(data.title);
 			// Set the info
 			$('#image_info').html(data.info);
+			// Set Next/Prev
+			next_id = data.next_id;
+			$('#next_link').attr('href', '#'+next_id);
+			prev_id = data.prev_id;
+			$('#prev_link').attr('href', '#'+prev_id);
 		})
 	}
 	
@@ -50,11 +46,10 @@ var ClickUI = new (function() {
 
 
 $(document).ready(function() {
-	
-	$.getJSON('/photos.json', function(data){
-		// Set the global list
-		ClickUI.setList(data.id_list);
-	})
+
+	// Set the global list
+	start_id = parseInt($.url().attr('anchor'));
+	ClickUI.setImage(start_id);
 	
 	// Power left/right buttons
 	$('#right_arrow').click(function(){

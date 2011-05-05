@@ -58,7 +58,7 @@
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js' %>
   <%= javascript_tag %{!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery-1.5.1.min.js"%3E%3C/script%3E'))} %>
 
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'libs/jquery.url', 'application' %>
 
   <%- # Fix any <img> or .png_bg background-images -%>
   <!--[if lt IE 7 ]>

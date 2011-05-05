@@ -379,12 +379,10 @@ div.image_info {
 
 div#right_arrow {
 	text-align: left;
-	cursor: pointer;
 }
 
 div#left_arrow {
 	text-align: right;
-	cursor: pointer;
 }
 
 div.image_buttons {
