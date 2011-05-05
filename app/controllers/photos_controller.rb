@@ -18,7 +18,12 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     
     photo_info_line = "#{@photo.focal_length}mm #{@photo.f_stop}f #{@photo.exposure} ISO #{@photo.iso}"
-    @photo_json = { 'title' => @photo.name, 'info' => photo_info_line, 'url' => @photo.image.url(:display)}
+    @photo_json = { 
+      'title' => @photo.name,
+      'taken' => @photo.taken_on.strftime('%b %d, %Y'),
+      'info' => photo_info_line,
+      'url' => @photo.image.url(:display)
+    }
 
     respond_to do |format|
       format.html # show.html.erb

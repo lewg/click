@@ -336,7 +336,7 @@ header {
 
 header h1 {
 	font-family: 'AmaranthRegular', Georgia, serif;
-	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	text-shadow: rgba(255,255,255,0.8) 0 1px 1px, rgba(0,0,0,0.8) 0 -1px 1px;
 	color: #e2ddd6;
 	font-size: 3em;
 }
