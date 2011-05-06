@@ -9,3 +9,4 @@ doc/
 .project
 .DS_Store
 /public/system/
+/public/sitemap*.gz

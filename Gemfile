@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
 gem "paperclip", "~> 2.3"
 gem 'typus'
 gem 'exifr'
+gem 'sitemap_generator'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
