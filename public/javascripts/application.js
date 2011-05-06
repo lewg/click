@@ -63,10 +63,10 @@ $(document).ready(function() {
 	$(document).bind('keydown', function(e){
 		switch (e.keyCode) {
 			case 37:
-				ClickUI.prevImg();
+				$('#left_arrow').click();
 				break;
 			case 39:
-				ClickUI.nextImg();
+				$('#right_arrow').click();
 				break;
 	 	}
 	})
