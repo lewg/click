@@ -20,7 +20,7 @@
 #
 
 class Photo < ActiveRecord::Base
-  has_attached_file :image, :styles => { :display => "900x500>", :thumb => "100x100>" }
+  has_attached_file :image, :styles => { :display => "1050x700>", :rss => "400x300>" }
   
   validates :name, :presence => true
   validates :description, :presence => true
