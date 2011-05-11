@@ -12,7 +12,7 @@ describe PhotosController do
 
   describe "GET index" do
     it "assigns all photo ids as @id_list" do
-      Photo.stub(:find) { [mock_photo] }
+      Photo.stub(:sorted) { [mock_photo] }
       get :index
       assigns(:id_list).should eq({'id_list' => [mock_photo.id]})
     end

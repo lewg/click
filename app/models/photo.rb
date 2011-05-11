@@ -31,7 +31,21 @@ class Photo < ActiveRecord::Base
   scope :sorted, order('taken_on DESC')
   
   before_save :load_exif
-    
+  
+  def load_exif
+    # Pull the Exif data
+    exif_data = EXIFR::JPEG.new(self.image.to_file)
+    return if exif_data.nil? or not exif_data.exif?
+    # Set the attributes
+    self.exposure = exif_data.exposure_time.to_s
+    self.f_stop = exif_data.f_number.to_f.to_s
+    self.focal_length = exif_data.focal_length.to_f.round.to_s
+    self.iso = exif_data.iso_speed_ratings
+    self.taken_on = exif_data.date_time.to_date
+  rescue
+    false
+  end
+  
   def info_line
     "#{self.focal_length}mm #{self.f_stop}f #{self.exposure} ISO #{self.iso}"
   end
@@ -50,20 +64,6 @@ class Photo < ActiveRecord::Base
   def prev_id
     @id_list = Photo.id_list
     @id_list.first.id == self.id ? @id_list.last : @id_list[@id_list.index(self.id) - 1]
-  end
-  
-  def load_exif
-    # Pull the Exif data
-    exif_data = EXIFR::JPEG.new(self.image.to_file)
-    return if exif_data.nil? or not exif_data.exif?
-    # Set the attributes
-    self.exposure = exif_data.exposure_time.to_s
-    self.f_stop = exif_data.f_number.to_f.to_s
-    self.focal_length = exif_data.focal_length.to_f.round.to_s
-    self.iso = exif_data.iso_speed_ratings
-    self.taken_on = exif_data.date_time.to_date
-  rescue
-    false
   end
   
 end
