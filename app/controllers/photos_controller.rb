@@ -1,13 +1,10 @@
 class PhotosController < ApplicationController
-  respond_to :json, :html
+  respond_to :json
   
   # GET /photos.json
   def index
     @id_list = {:id_list => Photo.id_list }
-
-    respond_to do |format|
-      format.json { respond_with @id_list }
-    end
+    respond_with @id_list
   end
 
   # GET /photos/1.json
@@ -24,9 +21,8 @@ class PhotosController < ApplicationController
       'prev_id' => @photo.prev_id
     }
 
-    respond_to do |format|
-      format.json { respond_with @photo_json }
-    end
+    respond_with @photo_json
+
   end
   
   # GET /photos/first.json
