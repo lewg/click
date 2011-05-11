@@ -28,7 +28,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   #   end
   
   images = []
-  Photo.find(:all, :order => 'taken_on DESC').each do |photo|
+  Photo.sorted.each do |photo|
     images << { 
       :loc => photo.image.url(:display), 
       :title => photo.name, 
