@@ -28,6 +28,8 @@ class Photo < ActiveRecord::Base
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ['image/jpeg']
   
+  scope :sorted, order('taken_on DESC')
+  
   before_save :load_exif
     
   def info_line
@@ -36,28 +38,18 @@ class Photo < ActiveRecord::Base
   
   def self.id_list
     @id_list = Array.new
-    self.find(:all, :order => 'taken_on desc').each { |photo| @id_list << photo.id }
+    self.sorted.each { |photo| @id_list << photo.id }
     @id_list
   end
   
   def next_id
     @id_list = Photo.id_list
-    next_index = @id_list.index(self.id) + 1
-    unless next_index==@id_list.length
-      @id_list[next_index]
-    else
-      @id_list[0]
-    end
+    @id_list.last.id == self.id ? @id_list.first : @id_list[@id_list.index(self.id) + 1]
   end
   
   def prev_id
     @id_list = Photo.id_list
-    prev_index = @id_list.index(self.id) - 1
-    unless prev_index == -1
-      @id_list[prev_index]
-    else
-      @id_list[@id_list.length-1]
-    end
+    @id_list.first.id == self.id ? @id_list.last : @id_list[@id_list.index(self.id) - 1]
   end
   
   def load_exif
