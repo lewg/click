@@ -58,12 +58,12 @@ class Photo < ActiveRecord::Base
   
   def next_id
     @id_list = Photo.id_list
-    @id_list.last.id == self.id ? @id_list.first : @id_list[@id_list.index(self.id) + 1]
+    @id_list.last == self.id ? @id_list.first : @id_list[@id_list.index(self.id) + 1]
   end
   
   def prev_id
     @id_list = Photo.id_list
-    @id_list.first.id == self.id ? @id_list.last : @id_list[@id_list.index(self.id) - 1]
+    @id_list.first == self.id ? @id_list.last : @id_list[@id_list.index(self.id) - 1]
   end
   
 end
