@@ -8,17 +8,17 @@
 */
 var ClickUI = new (function() {
 	
-	var next_id = 0
-	var prev_id = 0
-	
-	// Get the next image id
+	this.next_id = 0
+	this.prev_id = 0
+		
+	// Goto the next image
 	this.nextImg = function() {
-		this.setImage(next_id);
+		this.setImage(this.next_id);
 	}
-	
-	// Get the previous image id
+		
+	// Goto to the previous image
 	this.prevImg = function() {
-		this.setImage(prev_id);
+		this.setImage(this.prev_id);
 	}
 	
 	this.setImage = function(image_id) {
@@ -34,11 +34,12 @@ var ClickUI = new (function() {
 			$('#caption').html(data.title);
 			// Set the info
 			$('#image_info').html(data.info);
+			
 			// Set Next/Prev
-			next_id = data.next_id;
-			$('#next_link').attr('href', '#'+next_id);
-			prev_id = data.prev_id;
-			$('#prev_link').attr('href', '#'+prev_id);
+			ClickUI.next_id = data.next_id;
+			$('#next_link').attr('href', '#'+data.next_id);
+			ClickUI.prev_id = data.prev_id;
+			$('#prev_link').attr('href', '#'+data.prev_id);
 		})
 	}
 	
@@ -53,10 +54,14 @@ $(document).ready(function() {
 	
 	// Power left/right buttons
 	$('#right_arrow').click(function(){
+		window.location.hash = ClickUI.next_id;
 		ClickUI.nextImg();
+		return(false);
 	});
 	$('#left_arrow').click(function(){
+		window.location.hash = ClickUI.prev_id;
 		ClickUI.prevImg();
+		return(false);
 	});
 	
 	// Bind left/right arrows
