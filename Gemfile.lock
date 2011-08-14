@@ -28,7 +28,10 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
-    annotate-models (1.0.4)
+    annotated_models (3.0.2)
+      activesupport
+      annotated_models
+      i18n
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
@@ -104,7 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate-models (= 1.0.4)
+  annotated_models
   exifr
   paperclip (~> 2.3)
   rails (= 3.0.7)

@@ -9,7 +9,7 @@ gem 'sitemap_generator'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
-  gem 'annotate-models', '1.0.4'
+  gem 'annotated_models'
 end
 
 group :test do
